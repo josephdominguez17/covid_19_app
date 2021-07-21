@@ -1,0 +1,73 @@
+<%- include('partials/header') -%>
+<div class="container mt-5 w-200">
+
+    <h2 class="mb-4">Book appointments today for COVID-19</h2>
+
+    <P>Please make an appointment to the closest clinic (It's open 7 days a week).</P>
+
+    <form action="/member/new" method="POST" onSubmit="return Submit();">
+
+        <b>1. Enter your name</b> <br><br>
+        <input type="text" name="nameAppointment" class="form-control" placeholder="Name" required="required">
+
+        <br>
+        <b>2. Enter your email</b> <br><br>
+
+        <input type="email" name="ageAppointment" class="form-control" placeholder="Email" required="required">
+
+        <br>
+        <b>3. Enter your phone number</b> <br><br>
+
+        <input type="number" name="numberAppointment" class="form-control"
+               placeholder="Number" required="required"><br>
+
+        <b>4. Enter the time between 8am to 5 pm</b> <br><br>
+
+        <input type="time" name="timeAppointment" class="form-control"
+               placeholder="Time" required="required"><br>
+
+
+        <div class='form-group'>
+            <b>5. Select the closest clinic?</b> <br><br>
+            <input type="radio" name="clinicAppointment" id="r1" value="Sydney hospital">
+            <label for="r1">Sydney hospital</label><br>
+            <input type="radio" name="clinicAppointment" id="r2" value="Western Hospital">
+            <label for="r2">Western Hospital</label><br>
+            <input type="radio" name="clinicAppointment" id="r3" value="Mosman Hospital">
+            <label for="r3">Mosman Hospital</label><br>
+            <input type="radio" name="clinicAppointment" id="r4" value="Bondi Hospital" onclick="checkAnswer()">
+            <label for="r4">Bondi Hospital</label><br>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block mt-3">Book an appointment</button>
+
+    </form>
+
+    <SCRIPT language="JavaScript"
+            type="text/javascript">
+
+
+        var g = 0;
+
+        function Submit() {
+            if (g == 0) {
+                alert("Appointment was successfully made! you will soon recieve an email on the confirmation of your appointment timing.");
+            } else {
+                alert("Appointment Wasn't successful. Please try again later.")
+            }
+
+
+        }
+
+        function checkAnswer() {
+
+            g = g + 1;
+
+        }
+
+    </SCRIPT>
+
+</div>
+
+
+<%- include('partials/footer') -%>

@@ -1,0 +1,122 @@
+<%- include('partials/header') -%>
+<div class="container mt-5 w-200">
+
+    <h2 class="mb-4">COVID-19 Symptom Checker </h2>
+
+    <P>The tool is intended to help identify your risk of having contracted COVID-19. The following questions will help
+        you to assess your symptoms and find the closest test locations in your community. Please provided the
+        information requested.</P>
+
+    <form action="/member/new" method="POST" onSubmit="return Submit();">
+
+        <b>1. What is your name?</b> <br><br>
+        <input type="text" name="name" class="form-control" placeholder="Name" required="required">
+
+        <br>
+        <b>2. What is your age?</b> <br><br>
+
+        <input type="number" name="age" class="form-control" placeholder="Age" required="required">
+
+        <br>
+        <b>3. What is your current temperature?</b> <br><br>
+
+        <input type="number" name="temperature" class="form-control"
+               placeholder="Temperature" required="required"><br>
+
+        <b>4. Please select your gender:</b> <br><br>
+        <input type="radio" id="male" name="gender" value="male">
+        <label for="male">Male</label><br>
+        <input type="radio" id="female" name="gender" value="female">
+        <label for="female">Female</label><br>
+        <input type="radio" id="other" name="gender" value="other">
+        <label for="other">Other</label>
+        <input type="text" name="other" id="other_text"/></label>
+
+        <div class='form-group'>
+            <b>5. Have you had any trouble in the last 48 hours?</b> <br><br>
+            <input type="radio" name="breathing" id="r1" value="Cough">
+            <label for="r1">Breathing</label><br>
+            <input type="radio" name="breathing" id="r2" value="Fever">
+            <label for="r2">Fever</label><br>
+            <input type="radio" name="breathing" id="r3" value="Difficulty in Breathing">
+            <label for="r3">Sore throat</label><br>
+            <input type="radio" name="breathing" id="r4" value="None of the Above" onclick="checkAnswer()">
+            <label for="r4">None of the above</label><br>
+        </div>
+
+        <hr>
+        <div class='form-group'>
+            <b>6. Have you ever had any one of the following:<br><br></b>
+            <input type="radio" name="disease" id="r5" value="Diabetes">
+            <label for="r5">Diabetes</label><br>
+            <input type="radio" name="disease" id="r6" value="Hypertension">
+            <label for="r6">Hypertension</label><br>
+            <input type="radio" name="disease" id="r7" value="Lung disease">
+            <label for="r7">Lung disease</label><br>
+            <input type="radio" name="disease" id="r8" value="Heart disease">
+            <label for="r8">Heart disease</label><br>
+            <input type="radio" name="disease" id="r9" value="None of the above" onclick="checkAnswer()">
+            <label for="r9">None of the above</label><br>
+        </div>
+        <hr>
+        <div class="form-group">
+            <b>7. Have you lost smell or taste, or a change in taste in the last 48 hours?</b><br><br>
+            <input type="radio" name="smell" id="r10" value="Yes">
+            <label for="r10">Yes</label><br>
+            <input type="radio" name="smell" id="r11" value="No" onclick="checkAnswer()">
+            <label for="r11">No</label><br>
+
+        </div>
+        <hr>
+        <div class="form-group">
+            <b>8. Which one applies to you?</b><br><br>
+            <input type="radio" name="contact" id="r12"
+                   value="I have recently interacted or lived with someone who has tested positive for COVID-19">
+            <label for="r12">I have recently interacted or lived with someone who has tested positive for
+                COVID-19</label><br>
+            <input type="radio" name="contact" id="r13"
+                   value="I am a healthcare worker and I examined a COVID-19 confirmed case without protective gear.">
+            <label for="r13">I am a healthcare worker and I examined a COVID-19 confirmed case without protective
+                PPE.</label><br>
+            <input type="radio" name="contact" id="r14" value="None of the above" onclick="checkAnswer()">
+            <label for="r14">None of above.</label><br>
+        </div>
+        <b>9. Date</b><br>
+        <input type="date" name="date" class="form-control" placeholder="dd/mm/yyyy">
+
+        <button type="submit" class="btn btn-primary btn-block mt-3">Send</button>
+
+    </form>
+
+    <SCRIPT language="JavaScript"
+            type="text/javascript">
+
+
+        var g = 0;
+
+        function Submit() {
+            if (g == 0) {
+                alert("Your answers indicate that you have possible symptoms of COVID-19  You should get tested immediately");
+            } else if (g == 4) {
+                alert("Wash your hands regularly, Keep 1.5m apart, and Wear a mask if unable to physically distance");
+
+            } else {
+                alert("Mild chance of having COVID-19, Please get tested!")
+            }
+
+
+        }
+
+        function checkAnswer() {
+
+            g = g + 1;
+
+        }
+
+    </SCRIPT>
+
+
+</div>
+
+
+<%- include('partials/footer') -%>
